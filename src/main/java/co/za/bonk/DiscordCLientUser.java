@@ -27,20 +27,20 @@ public class DiscordCLientUser implements Runnable {
         final GatewayDiscordClient gateway = client.login().block();
 
         RestChannel Testchannel = client.getChannelById(Snowflake.of("827103671233937408"));
-        Testchannel.createMessage("wow");
+        Testchannel.createMessage("wow").subscribe();
 
         gateway.on(MessageCreateEvent.class).subscribe(event -> {
             final Message message = event.getMessage();
             final String contents = message.getContent();
 
-            message.getChannel().block().createMessage("wow");
-
-            if(contents.startsWith("$")) {
+            if(contents.startsWith("$") && message.getAuthor().map(user -> !user.isBot()).orElse(false)) {
                 final MessageChannel channel = message.getChannel().block();
                 deafaultChannel = channel;
                 channel.createMessage(contents.substring(prefix.length()));
             }
         });
+
+        gateway.onDisconnect().block();
     }
 
     public static DiscordCLientUser getInstance() {
