@@ -48,7 +48,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
         Bukkit.getScheduler().runTaskAsynchronously(this, new DiscordCLientUser());
         
         //command for connecting discord
-        this.getCommand("discord").setExecutor(new discordCommand());
+        this.getCommand("discord").setExecutor(new DiscordCommand());
         
         //connection info
         host = "admin.bonk.co.za";
@@ -72,7 +72,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        DiscordCLientUser.getGatway();
     }
 
 
