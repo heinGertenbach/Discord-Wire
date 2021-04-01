@@ -1,0 +1,5 @@
+
+discordConfig:
+  prefix: $
+  deafaultChannel: --channel Id--
+  

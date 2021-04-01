@@ -25,7 +25,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
         return instance;
     }
 
-    public static Statement getSTatement() {
+    public static Statement getStatement() {
         return statement;
     }
 
@@ -39,6 +39,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
         //create the secrets file if it doesn't exist
         createSecretsConfig();
+        saveDefaultConfig();
 
         //Register event listener
         getServer().getPluginManager().registerEvents(new EventListener(), this);
