@@ -1,78 +1,82 @@
-[15:44:42] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[15:44:43] [main/INFO]: Reloading ResourceManager: Default, bukkit
-[15:44:44] [Worker-Main-3/INFO]: Loaded 7 recipes
-[15:44:45] [Server thread/INFO]: Starting minecraft server version 1.16.5
-[15:44:45] [Server thread/INFO]: Loading properties
-[15:44:45] [Server thread/INFO]: This server is running Paper version git-Paper-574 (MC: 1.16.5) (Implementing API version 1.16.5-R0.1-SNAPSHOT)
-[15:44:45] [Server thread/INFO]: Debug logging is disabled
-[15:44:45] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[15:44:45] [Server thread/INFO]: Using 4 threads for Netty based IO
-[15:44:46] [Server thread/INFO]: Default game type: SURVIVAL
-[15:44:46] [Server thread/INFO]: Generating keypair
-[15:44:46] [Server thread/INFO]: Starting Minecraft server on *:25565
-[15:44:46] [Server thread/INFO]: Using default channel type
-[15:44:46] [Server thread/INFO]: [discordPaperPlugin] Loading discordPaperPlugin v0.0.1
-[15:44:46] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[15:44:46] [Server thread/INFO]: Preparing level "world"
-[15:44:47] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[15:44:47] [Server thread/INFO]: Loaded 0 spawn chunks for world world
-[15:44:47] [Server thread/INFO]: Preparing spawn area: 0%
-[15:44:47] [Server thread/INFO]: Time elapsed: 351 ms
-[15:44:47] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[15:44:47] [Server thread/INFO]: Loaded 0 spawn chunks for world world_nether
-[15:44:47] [Server thread/INFO]: Time elapsed: 114 ms
-[15:44:47] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[15:44:47] [Server thread/INFO]: Loaded 0 spawn chunks for world world_the_end
-[15:44:47] [Server thread/INFO]: Time elapsed: 155 ms
-[15:44:47] [Server thread/INFO]: [discordPaperPlugin] Enabling discordPaperPlugin v0.0.1
-[15:44:47] [Server thread/INFO]: Running delayed init tasks
-[15:44:47] [Server thread/INFO]: Done (2.109s)! For help, type "help"
-[15:44:47] [Server thread/INFO]: Timings Reset
-[15:44:49] [Craft Scheduler Thread - 3/INFO]: [discord4j.core.DiscordClientBuilder] Discord4J 3.1.4 (https://discord4j.com)
-[15:44:51] [boundedElastic-1/INFO]: [discord4j.core.shard.GatewayBootstrap] Found StoreService: discord4j.store.api.noop.NoOpStoreService@2e89f437
-[15:44:53] [reactor-http-nio-2/INFO]: [discord4j.gateway.DefaultGatewayClient] [G:46e400c9, S:0] Connected to Gateway
-[15:44:53] [reactor-http-nio-2/INFO]: [discord4j.core.shard.LocalShardCoordinator] [G:46e400c9, S:0] Shard connected
-[15:45:08] [User Authenticator #1/INFO]: UUID of player PAINDOESNTLAST is f2be1e61-ebba-4dab-980a-8419ed07b1ac
-[15:45:08] [Server thread/INFO]: PAINDOESNTLAST joined the game
-[15:45:08] [Server thread/INFO]: PAINDOESNTLAST[/127.0.0.1:53825] logged in with entity id 163 at ([world]36.04864443613952, 72.0, -171.30000001192093)
-[15:45:12] [Async Chat Thread - #0/ERROR]: Could not pass event AsyncPlayerChatEvent to discordPaperPlugin v0.0.1
-java.lang.NullPointerException: Cannot invoke "discord4j.core.object.entity.channel.MessageChannel.createMessage(String)" because "channel" is null
-	at co.za.bonk.EventListener.onPlayerChat(EventListener.java:21) ~[?:?]
-	at com.destroystokyo.paper.event.executor.asm.generated.GeneratedEventExecutor1.execute(Unknown Source) ~[?:?]
-	at org.bukkit.plugin.EventExecutor.lambda$create$1(EventExecutor.java:69) ~[patched_1.16.5.jar:git-Paper-574]
-	at co.aikar.timings.TimedEventExecutor.execute(TimedEventExecutor.java:76) ~[patched_1.16.5.jar:git-Paper-574]
-	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:70) ~[patched_1.16.5.jar:git-Paper-574]
-	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:607) ~[patched_1.16.5.jar:git-Paper-574]
-	at io.papermc.paper.adventure.ChatProcessor.post(ChatProcessor.java:222) ~[patched_1.16.5.jar:git-Paper-574]
-	at io.papermc.paper.adventure.ChatProcessor.processingLegacyFirst(ChatProcessor.java:102) ~[patched_1.16.5.jar:git-Paper-574]
-	at io.papermc.paper.adventure.ChatProcessor.process(ChatProcessor.java:60) ~[patched_1.16.5.jar:git-Paper-574]
-	at net.minecraft.server.v1_16_R3.PlayerConnection.chat(PlayerConnection.java:2085) ~[patched_1.16.5.jar:git-Paper-574]
-	at net.minecraft.server.v1_16_R3.PlayerConnection.c(PlayerConnection.java:2000) ~[patched_1.16.5.jar:git-Paper-574]
-	at net.minecraft.server.v1_16_R3.PlayerConnection.a(PlayerConnection.java:1938) ~[patched_1.16.5.jar:git-Paper-574]
-	at net.minecraft.server.v1_16_R3.PacketPlayInChat$1.run(PacketPlayInChat.java:43) ~[patched_1.16.5.jar:git-Paper-574]
-	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
-	at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
-	at java.lang.Thread.run(Thread.java:831) [?:?]
-[15:45:12] [Async Chat Thread - #0/INFO]: <PAINDOESNTLAST> wow
-[15:45:20] [Server thread/INFO]: PAINDOESNTLAST lost connection: Disconnected
-[15:45:20] [Server thread/INFO]: PAINDOESNTLAST left the game
-[15:45:23] [Server thread/INFO]: Stopping the server
-[15:45:23] [Server thread/INFO]: Stopping server
-[15:45:23] [Server thread/INFO]: [discordPaperPlugin] Disabling discordPaperPlugin v0.0.1
-[15:45:28] [Server thread/ERROR]: Nag author: '<NoAuthorGiven>' of 'discordPaperPlugin' about the following: This plugin is not properly shutting down its async tasks when it is being shut down. This task may throw errors during the final shutdown logs and might not complete before process dies.
-[15:45:28] [Server thread/INFO]: Saving players
-[15:45:28] [Server thread/INFO]: Saving worlds
-[15:45:28] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[15:45:29] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[15:45:29] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[15:45:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[15:45:30] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[15:45:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[15:45:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[15:45:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[15:45:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[15:45:30] [Server thread/INFO]: Flushing Chunk IO
-[15:45:30] [Server thread/INFO]: Closing Thread Pool
-[15:45:30] [Server thread/INFO]: Closing Server
+[16:12:02] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[16:12:03] [main/INFO]: Reloading ResourceManager: Default, bukkit
+[16:12:04] [Worker-Main-4/INFO]: Loaded 7 recipes
+[16:12:06] [Server thread/INFO]: Starting minecraft server version 1.16.5
+[16:12:06] [Server thread/INFO]: Loading properties
+[16:12:06] [Server thread/INFO]: This server is running Paper version git-Paper-574 (MC: 1.16.5) (Implementing API version 1.16.5-R0.1-SNAPSHOT)
+[16:12:06] [Server thread/INFO]: Debug logging is disabled
+[16:12:06] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[16:12:06] [Server thread/INFO]: Using 4 threads for Netty based IO
+[16:12:07] [Server thread/INFO]: Default game type: SURVIVAL
+[16:12:07] [Server thread/INFO]: Generating keypair
+[16:12:07] [Server thread/INFO]: Starting Minecraft server on *:25565
+[16:12:07] [Server thread/INFO]: Using default channel type
+[16:12:08] [Server thread/INFO]: [discordPaperPlugin] Loading discordPaperPlugin v0.0.1
+[16:12:08] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[16:12:08] [Server thread/INFO]: Preparing level "world"
+[16:12:08] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[16:12:08] [Server thread/INFO]: Loaded 0 spawn chunks for world world
+[16:12:08] [Server thread/INFO]: Preparing spawn area: 0%
+[16:12:08] [Server thread/INFO]: Preparing spawn area: 0%
+[16:12:09] [Server thread/INFO]: Time elapsed: 602 ms
+[16:12:09] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[16:12:09] [Server thread/INFO]: Loaded 0 spawn chunks for world world_nether
+[16:12:09] [Server thread/INFO]: Time elapsed: 289 ms
+[16:12:09] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[16:12:09] [Server thread/INFO]: Loaded 0 spawn chunks for world world_the_end
+[16:12:09] [Server thread/INFO]: Time elapsed: 162 ms
+[16:12:09] [Server thread/INFO]: [discordPaperPlugin] Enabling discordPaperPlugin v0.0.1
+[16:12:09] [Server thread/WARN]: java.lang.ClassNotFoundException: com.mysql.cj.jdbc.Driver
+[16:12:09] [Server thread/WARN]: 	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:433)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.plugin.java.PluginClassLoader.findClass(PluginClassLoader.java:182)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.plugin.java.PluginClassLoader.findClass(PluginClassLoader.java:111)
+[16:12:09] [Server thread/WARN]: 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:586)
+[16:12:09] [Server thread/WARN]: 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:519)
+[16:12:09] [Server thread/WARN]: 	at java.base/java.lang.Class.forName0(Native Method)
+[16:12:09] [Server thread/WARN]: 	at java.base/java.lang.Class.forName(Class.java:375)
+[16:12:09] [Server thread/WARN]: 	at co.za.bonk.DiscordPaperPlugin.openConnection(DiscordPaperPlugin.java:104)
+[16:12:09] [Server thread/WARN]: 	at co.za.bonk.DiscordPaperPlugin.onEnable(DiscordPaperPlugin.java:62)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:263)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.plugin.java.JavaPluginLoader.enablePlugin(JavaPluginLoader.java:380)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:483)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_16_R3.CraftServer.enablePlugin(CraftServer.java:501)
+[16:12:09] [Server thread/WARN]: 	at org.bukkit.craftbukkit.v1_16_R3.CraftServer.enablePlugins(CraftServer.java:415)
+[16:12:09] [Server thread/WARN]: 	at net.minecraft.server.v1_16_R3.MinecraftServer.loadWorld(MinecraftServer.java:580)
+[16:12:09] [Server thread/WARN]: 	at net.minecraft.server.v1_16_R3.DedicatedServer.init(DedicatedServer.java:280)
+[16:12:09] [Server thread/WARN]: 	at net.minecraft.server.v1_16_R3.MinecraftServer.w(MinecraftServer.java:1055)
+[16:12:09] [Server thread/WARN]: 	at net.minecraft.server.v1_16_R3.MinecraftServer.lambda$a$0(MinecraftServer.java:289)
+[16:12:09] [Server thread/WARN]: 	at java.base/java.lang.Thread.run(Thread.java:831)
+[16:12:09] [Server thread/INFO]: Running delayed init tasks
+[16:12:09] [Server thread/INFO]: Done (3.007s)! For help, type "help"
+[16:12:09] [Server thread/INFO]: Timings Reset
+[16:12:12] [Craft Scheduler Thread - 1/INFO]: [discord4j.core.DiscordClientBuilder] Discord4J 3.1.4 (https://discord4j.com)
+[16:12:16] [boundedElastic-1/INFO]: [discord4j.core.shard.GatewayBootstrap] Found StoreService: discord4j.store.api.noop.NoOpStoreService@4fefce2f
+[16:12:16] [User Authenticator #1/INFO]: UUID of player PAINDOESNTLAST is f2be1e61-ebba-4dab-980a-8419ed07b1ac
+[16:12:17] [Server thread/INFO]: PAINDOESNTLAST joined the game
+[16:12:17] [Server thread/INFO]: PAINDOESNTLAST[/127.0.0.1:54396] logged in with entity id 159 at ([world]36.80006946791902, 72.0, -174.49290392263367)
+[16:12:19] [reactor-http-nio-2/INFO]: [discord4j.gateway.DefaultGatewayClient] [G:4e9c389f, S:0] Connected to Gateway
+[16:12:19] [reactor-http-nio-2/INFO]: [discord4j.core.shard.LocalShardCoordinator] [G:4e9c389f, S:0] Shard connected
+[16:12:21] [Async Chat Thread - #0/INFO]: <PAINDOESNTLAST> wow
+[16:12:41] [Async Chat Thread - #0/INFO]: <PAINDOESNTLAST> hello discord from Minecraft
+[16:13:52] [Async Chat Thread - #1/INFO]: <PAINDOESNTLAST> sdfghjhfdxcfghyujgcxfghj
+[16:14:11] [Async Chat Thread - #1/INFO]: <PAINDOESNTLAST> ahh zomb
+[16:14:15] [Server thread/INFO]: PAINDOESNTLAST lost connection: Disconnected
+[16:14:15] [Server thread/INFO]: PAINDOESNTLAST left the game
+[16:15:20] [Server thread/INFO]: Stopping the server
+[16:15:20] [Server thread/INFO]: Stopping server
+[16:15:20] [Server thread/INFO]: [discordPaperPlugin] Disabling discordPaperPlugin v0.0.1
+[16:15:25] [Server thread/ERROR]: Nag author: '<NoAuthorGiven>' of 'discordPaperPlugin' about the following: This plugin is not properly shutting down its async tasks when it is being shut down. This task may throw errors during the final shutdown logs and might not complete before process dies.
+[16:15:25] [Server thread/INFO]: Saving players
+[16:15:25] [Server thread/INFO]: Saving worlds
+[16:15:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:15:27] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:15:27] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[16:15:28] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:15:28] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[16:15:29] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:15:29] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:15:29] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:15:29] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:15:29] [Server thread/INFO]: Flushing Chunk IO
+[16:15:29] [Server thread/INFO]: Closing Thread Pool
+[16:15:29] [Server thread/INFO]: Closing Server

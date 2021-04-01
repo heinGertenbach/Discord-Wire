@@ -13,7 +13,7 @@ import discord4j.common.util.Snowflake;
 public class DiscordCLientUser implements Runnable {
 
     private static DiscordCLientUser instance;
-    private static MessageChannel deafaultChannel;
+    private static RestChannel deafaultChannel;
     
     @Override
     public void run() {
@@ -22,12 +22,12 @@ public class DiscordCLientUser implements Runnable {
 
         final FileConfiguration secrets = plugin.getSecrets();
         final String token = secrets.getString("discordToken");
-        final String prefix = secrets.getString("prefix");
+        final String prefix = plugin.getConfig().getString("discordConfig.prefix");
+
         final DiscordClient client = DiscordClient.create(token);
         final GatewayDiscordClient gateway = client.login().block();
 
-        RestChannel Testchannel = client.getChannelById(Snowflake.of("827103671233937408"));
-        Testchannel.createMessage("wow").subscribe();
+        deafaultChannel = client.getChannelById(Snowflake.of(plugin.getConfig().getString("discordConfig.deafaultChannel")));
 
         gateway.on(MessageCreateEvent.class).subscribe(event -> {
             final Message message = event.getMessage();
@@ -35,8 +35,7 @@ public class DiscordCLientUser implements Runnable {
 
             if(contents.startsWith("$") && message.getAuthor().map(user -> !user.isBot()).orElse(false)) {
                 final MessageChannel channel = message.getChannel().block();
-                deafaultChannel = channel;
-                channel.createMessage(contents.substring(prefix.length()));
+                channel.createMessage(contents.substring(prefix.length())).subscribe();
             }
         });
 
@@ -47,7 +46,7 @@ public class DiscordCLientUser implements Runnable {
         return instance;
     }
 
-    public static MessageChannel getDeafaultChannel() {
+    public static RestChannel getDeafaultChannel() {
         return deafaultChannel;
     }
 
