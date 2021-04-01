@@ -15,6 +15,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
 
     private static DiscordPaperPlugin instance;
+    private static Statement statement;
 
     private File configFile;
     private FileConfiguration secretsConfig;
@@ -22,6 +23,10 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
     public static DiscordPaperPlugin getInstance() {
         return instance;
+    }
+
+    public static Statement getSTatement() {
+        return statement;
     }
 
     String host, port, database, username, password;
@@ -54,7 +59,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
         //connection
         try {    
             openConnection();
-            Statement statement = connection.createStatement();
+            statement = connection.createStatement();
                        
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -89,6 +94,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
             e.printStackTrace();
         }
     }
+
     public void openConnection() throws SQLException,
             ClassNotFoundException {
         if (connection != null && !connection.isClosed()) {
