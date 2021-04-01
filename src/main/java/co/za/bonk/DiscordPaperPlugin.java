@@ -7,6 +7,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
+import java.sql.*;
+
+import com.google.common.util.concurrent.Service.State;
 
 public class DiscordPaperPlugin extends JavaPlugin {
 
@@ -21,6 +24,9 @@ public class DiscordPaperPlugin extends JavaPlugin {
         return instance;
     }
 
+    String host, port, database, username, password;
+    static Connection connection;
+
     @Override
     public void onEnable() {
         //set instance of the class:
@@ -34,6 +40,28 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
         //start the Asyncronous Discord client
         Bukkit.getScheduler().runTaskAsynchronously(this, new DiscordCLientUser());
+        
+        //command for connecting discord
+        this.getCommand("discord").setExecutor(new discordCommand());
+        
+        //connection info
+        host = "admin.bonk.co.za";
+        port = "3306";
+        database = "minecraft";
+        username = "General2";
+        password = "P@sswerd2gen";
+
+        //connection
+        try {    
+            openConnection();
+            Statement statement = connection.createStatement();
+                       
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @Override
@@ -61,5 +89,14 @@ public class DiscordPaperPlugin extends JavaPlugin {
             e.printStackTrace();
         }
     }
-
+    public void openConnection() throws SQLException,
+            ClassNotFoundException {
+        if (connection != null && !connection.isClosed()) {
+            return;
+        }
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        connection = DriverManager.getConnection("jdbc:mysql://"
+                + this.host+ ":" + this.port + "/" + this.database,
+                this.username, this.password);
+    }
 }
