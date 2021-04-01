@@ -72,7 +72,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        DiscordCLientUser.getGatway().;
+
     }
 
 
