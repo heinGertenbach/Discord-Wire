@@ -14,6 +14,7 @@ public class DiscordCLientUser implements Runnable {
 
     private static DiscordCLientUser instance;
     private static RestChannel deafaultChannel;
+    private static GatewayDiscordClient gateway;
     
     @Override
     public void run() {
@@ -25,7 +26,7 @@ public class DiscordCLientUser implements Runnable {
         final String prefix = plugin.getConfig().getString("discordConfig.prefix");
 
         final DiscordClient client = DiscordClient.create(token);
-        final GatewayDiscordClient gateway = client.login().block();
+        gateway = client.login().block();
 
         deafaultChannel = client.getChannelById(Snowflake.of(plugin.getConfig().getString("discordConfig.deafaultChannel")));
 
@@ -48,6 +49,10 @@ public class DiscordCLientUser implements Runnable {
 
     public static RestChannel getDeafaultChannel() {
         return deafaultChannel;
+    }
+
+    public static GatewayDiscordClient getGatway() {
+        return gateway;
     }
 
 }
