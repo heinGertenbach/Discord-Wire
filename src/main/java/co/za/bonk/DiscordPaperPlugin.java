@@ -15,7 +15,6 @@ public class DiscordPaperPlugin extends JavaPlugin {
     private static DiscordPaperPlugin instance;
     private static Statement statement;
 
-    private File configFile;
     private FileConfiguration secretsConfig;
 
 
@@ -48,13 +47,13 @@ public class DiscordPaperPlugin extends JavaPlugin {
         //command for connecting discord
         getCommand("discord").setExecutor(new DiscordCommand());
         getCommand("discord").setTabCompleter(new DiscordCommandTabCompleter());
-        
+
         //connection info
-        host = "admin.bonk.co.za";
-        port = "3306";
-        database = "minecraft";
-        username = "General2";
-        password = "P@sswerd2gen";
+        host = secretsConfig.getString("sql.hostname"); //"admin.bonk.co.za";
+        port = secretsConfig.getString("sql.port");
+        database = secretsConfig.getString("sql.database");
+        username = secretsConfig.getString("sql.username");
+        password = secretsConfig.getString("sql.password");
 
         //connection
         try {    
@@ -80,7 +79,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
     }
 
     private void createSecretsConfig(){
-        configFile = new File(getDataFolder(), "secrets.yml");
+        File configFile = new File(getDataFolder(), "secrets.yml");
         if(!configFile.exists()) {
             configFile.getParentFile().mkdirs();
             saveResource("secrets.yml", false);
@@ -100,7 +99,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
         if (connection != null && !connection.isClosed()) {
             return;
         }
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        //Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection("jdbc:mysql://"
                 + this.host+ ":" + this.port + "/" + this.database,
                 this.username, this.password);
