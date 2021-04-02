@@ -3,12 +3,12 @@ package co.za.bonk;
 import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.configuration.file.FileConfiguration;
-
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import discord4j.core.event.domain.message.MessageCreateEvent;
 import discord4j.core.object.entity.User;
+import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.rest.entity.RestChannel;
 import discord4j.common.util.Snowflake;
 
@@ -24,6 +24,7 @@ public class DiscordCLientUser implements Runnable {
     private static DiscordCLientUser instance;
     private static RestChannel deafaultChannel;
     private static GatewayDiscordClient gateway;
+    private static DiscordClient client;
 
     private static final Map<String, Command> commands = new HashMap<>();
 
@@ -51,6 +52,16 @@ public class DiscordCLientUser implements Runnable {
 
         });
     }
+
+    //command to set deafault channel:
+    static {
+        commands.put("default", event -> {
+            MessageChannel channel =  event.getMessage().getChannel().block();
+
+            deafaultChannel = client.getChannelById(channel.getId());
+            DiscordPaperPlugin.getInstance().getConfig().set("discordConfig.deafaultChannel", channel.getId());
+        });
+    }
     
     @Override
     public void run() {
@@ -61,10 +72,11 @@ public class DiscordCLientUser implements Runnable {
         final String token = secrets.getString("discordToken");
         final String prefix = plugin.getConfig().getString("discordConfig.prefix");
 
-        final DiscordClient client = DiscordClient.create(token);
+        client = DiscordClient.create(token);
         gateway = client.login().block();
 
-        deafaultChannel = client.getChannelById(Snowflake.of(plugin.getConfig().getString("discordConfig.deafaultChannel")));
+        Snowflake defaultChannelID = Snowflake.of(plugin.getConfig().getString("discordConfig.deafaultChannel"));
+        deafaultChannel = client.getChannelById(defaultChannelID);
 
         gateway.on(ReadyEvent.class).subscribe(event -> {
             final User self = event.getSelf();
