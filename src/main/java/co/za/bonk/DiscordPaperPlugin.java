@@ -43,7 +43,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
         //Register event listener
         getServer().getPluginManager().registerEvents(new EventListener(), this);
-
+     
         //start the Asyncronous Discord client
         Bukkit.getScheduler().runTaskAsynchronously(this, new DiscordCLientUser());
         
