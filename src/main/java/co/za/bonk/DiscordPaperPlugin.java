@@ -46,7 +46,8 @@ public class DiscordPaperPlugin extends JavaPlugin {
         Bukkit.getScheduler().runTaskAsynchronously(this, new DiscordCLientUser());
         
         //command for connecting discord
-        //this.getCommand("discord").setExecutor(new DiscordCommand());
+        getCommand("discord").setExecutor(new DiscordCommand());
+        getCommand("discord").setTabCompleter(new DiscordCommandTabCompleter());
         
         //connection info
         host = "admin.bonk.co.za";
