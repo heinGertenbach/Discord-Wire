@@ -14,25 +14,47 @@ public class DiscordCommand implements CommandExecutor{
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args){
         if (sender instanceof Player){
-            class CodeListen implements Listener{
-                @SuppressWarnings("deprecation")
-                @EventHandler
-                public void onPlayerChat(AsyncPlayerChatEvent event) {
-                    Player player = event.getPlayer();
-                    String message = event.getMessage();
-                    try{
-                        DiscordPaperPlugin.getStatement().executeUpdate("INSERT INTO discord (Minecraft_names) VALUES ("+player+") WHERE Reference_num = "+message+";");
-                    } catch(SQLException exception){
-                        exception.getStackTrace();
+
+            if (args.length > 0) {
+
+                if (args[0].equals("register")) {
+                    if (args.length > 1) {
+                        //update sql with username and arg[1]
+                        String minecraftName = sender.getName();
+                        String hash = args[1];
+
+                        sender.sendMessage("well done you registered!");
+                        return true;
                     }
-                    
-                }    
-                
-            }  
-   
+
+                    sender.sendMessage("usage: /<command> [register] [unique_hash]");
+                    return true;
+                }
+        
+
+
+                //     class CodeListen implements Listener{
+                //         @SuppressWarnings("deprecation")
+                //         @EventHandler
+                //         public void onPlayerChat(AsyncPlayerChatEvent event) {
+                //             Player player = event.getPlayer();
+                //             String message = event.getMessage();
+                //             try{
+                //                 DiscordPaperPlugin.getStatement().executeUpdate("INSERT INTO discord (Minecraft_names) VALUES ("+player+") WHERE Reference_num = "+message+";");
+                //             } catch(SQLException exception){
+                //                 exception.getStackTrace();
+                //             }
+                            
+                //         }    
+                        
+                //     }  
+        
+                // }
+
+                return true;
+            }
         }
 
-        return true;
+        return false;
     }
-
 }

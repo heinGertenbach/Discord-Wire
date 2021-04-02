@@ -60,6 +60,8 @@ public class DiscordCLientUser implements Runnable {
 
             deafaultChannel = client.getChannelById(channel.getId());
             DiscordPaperPlugin.getInstance().getConfig().set("discordConfig.deafaultChannel", channel.getId());
+
+            channel.createMessage("default channel set to: "); //get channel name to insert at end
         });
     }
     

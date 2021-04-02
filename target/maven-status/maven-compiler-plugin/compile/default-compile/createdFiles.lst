@@ -1,6 +1,6 @@
 co\za\bonk\DiscordCLientUser.class
 co\za\bonk\DiscordPaperPlugin.class
+co\za\bonk\DiscordCommandTabCompleter.class
 co\za\bonk\Command.class
 co\za\bonk\EventListener.class
-co\za\bonk\DiscordCommand$1CodeListen.class
 co\za\bonk\DiscordCommand.class
