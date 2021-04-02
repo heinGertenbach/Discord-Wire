@@ -1,5 +1,6 @@
 package co.za.bonk;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -44,8 +45,15 @@ public class DiscordCLientUser implements Runnable {
             User author = event.getMessage().getAuthor().get();
 
             //do SQL insertion for hash:
-            int hash = (author.getUsername() + author.getDiscriminator()).hashCode();
+            String username = author.getUsername() + "#" +author.getDiscriminator();
+            int hash = username.hashCode();
 
+            try{
+                DiscordPaperPlugin.getStatement().executeUpdate("INSERT INTO discord (Discord_Username_num, Refrence_num) VALUES ("+username+","+hash+") WHERE NOT EXISTS(SELECT Discord_Username_num FROM discord WHERE "+username+" = discord.DiscordUsername_num);");
+
+            } catch (SQLException e) {
+                e.getStackTrace();
+            }
 
             //return the command to enter to dm:
             author.getPrivateChannel().block().createMessage("Enter command: /discord register " + hash).block();
