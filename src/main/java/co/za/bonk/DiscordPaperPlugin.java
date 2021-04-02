@@ -9,8 +9,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 
-import com.google.common.util.concurrent.Service.State;
-
 public class DiscordPaperPlugin extends JavaPlugin {
 
 
@@ -48,7 +46,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
         Bukkit.getScheduler().runTaskAsynchronously(this, new DiscordCLientUser());
         
         //command for connecting discord
-        this.getCommand("discord").setExecutor(new DiscordCommand());
+        //this.getCommand("discord").setExecutor(new DiscordCommand());
         
         //connection info
         host = "admin.bonk.co.za";
