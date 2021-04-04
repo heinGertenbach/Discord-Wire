@@ -90,7 +90,7 @@ public class DiscordCLientUser implements Runnable {
 
         gateway.on(ReadyEvent.class).subscribe(event -> {
             final User self = event.getSelf();
-            DiscordPaperPlugin.getInstance().getLogger().info("Discord Bot logged in as: " + self.getUsername() + "$" + self.getDiscriminator());
+            DiscordPaperPlugin.getInstance().getLogger().info("Discord Bot logged in as: " + self.getUsername() + "#" + self.getDiscriminator());
         });
 
         //register message listener:
@@ -106,7 +106,7 @@ public class DiscordCLientUser implements Runnable {
                 }
         });
 
-        gateway.onDisconnect().block();
+        //gateway.onDisconnect().block();
     }
 
     public static DiscordCLientUser getInstance() {
