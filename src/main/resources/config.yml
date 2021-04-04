@@ -2,4 +2,24 @@
 discordConfig:
   prefix: $
   deafaultChannel: --channel Id--
+
+#
+# Database types:
+#
+#   remote database:
+#     - MySQL
+#     - MongoDB
+#
+#   local database:
+#     -json
+#
+
+database: MySQL
+
+
+# If MySQL is chosen database:
+sqlConfig:
+  databaseName: --database name--
+  tableName: discordWire
+
   

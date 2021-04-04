@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.logging.Logger;
 
 public class DiscordPaperPlugin extends JavaPlugin {
 
@@ -55,6 +56,14 @@ public class DiscordPaperPlugin extends JavaPlugin {
         username = secretsConfig.getString("sql.username");
         password = secretsConfig.getString("sql.password");
 
+        Logger log = getLogger();
+        log.info("SQL information:");
+        log.info("  hostname: " + host);
+        log.info("  port    : " + port);
+        log.info("  database: " + database);
+        log.info("  username: " + username);
+        log.info("  password: " + password);
+
         //connection
         try {    
             openConnection();
@@ -99,9 +108,8 @@ public class DiscordPaperPlugin extends JavaPlugin {
         if (connection != null && !connection.isClosed()) {
             return;
         }
-        //Class.forName("com.mysql.cj.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://"
-                + this.host+ ":" + this.port + "/" + this.database,
-                this.username, this.password);
+
+        SQLDatabase database = new SQLDatabase("jdbc:mysql://" +this.host+ ":" +this.port+ "/" +this.database+ "?autoReconnect=true&useSSL=false", username, password);
+        connection = database.getConnection();
     }
 }
