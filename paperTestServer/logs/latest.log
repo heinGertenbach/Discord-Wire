@@ -1,41 +1,61 @@
-[13:58:43] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[13:58:44] [main/INFO]: Reloading ResourceManager: Default, bukkit
-[13:58:44] [Worker-Main-4/INFO]: Loaded 7 recipes
-[13:58:46] [Server thread/INFO]: Starting minecraft server version 1.16.5
-[13:58:46] [Server thread/INFO]: Loading properties
-[13:58:46] [Server thread/INFO]: This server is running Paper version git-Paper-574 (MC: 1.16.5) (Implementing API version 1.16.5-R0.1-SNAPSHOT)
-[13:58:46] [Server thread/INFO]: Debug logging is disabled
-[13:58:46] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[13:58:46] [Server thread/INFO]: Using 4 threads for Netty based IO
-[13:58:46] [Server thread/INFO]: Default game type: SURVIVAL
-[13:58:46] [Server thread/INFO]: Generating keypair
-[13:58:46] [Server thread/INFO]: Starting Minecraft server on *:25565
-[13:58:46] [Server thread/INFO]: Using default channel type
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin] Loading discordPaperPlugin v0.0.1
-[13:58:47] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[13:58:47] [Server thread/INFO]: Preparing level "world"
-[13:58:47] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[13:58:47] [Server thread/INFO]: Loaded 0 spawn chunks for world world
-[13:58:47] [Server thread/INFO]: Preparing spawn area: 0%
-[13:58:47] [Server thread/INFO]: Time elapsed: 285 ms
-[13:58:47] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[13:58:47] [Server thread/INFO]: Loaded 0 spawn chunks for world world_nether
-[13:58:47] [Server thread/INFO]: Time elapsed: 151 ms
-[13:58:47] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[13:58:47] [Server thread/INFO]: Loaded 0 spawn chunks for world world_the_end
-[13:58:47] [Server thread/INFO]: Time elapsed: 91 ms
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin] Enabling discordPaperPlugin v0.0.1
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin] SQL information:
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin]   hostname: admin.bonk.co.za
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin]   port    : 3306
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin]   database: minecraft
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin]   username: General
-[13:58:47] [Server thread/INFO]: [discordPaperPlugin]   password: ImlazyAsf
-[13:58:49] [Server thread/INFO]: Running delayed init tasks
-[13:58:49] [Server thread/INFO]: Done (3.520s)! For help, type "help"
-[13:58:49] [Server thread/INFO]: Timings Reset
-[13:58:50] [Craft Scheduler Thread - 3/INFO]: [discord4j.core.DiscordClientBuilder] Discord4J 3.1.4 (https://discord4j.com)
-[13:58:53] [boundedElastic-1/INFO]: [discord4j.core.shard.GatewayBootstrap] Found StoreService: discord4j.store.api.noop.NoOpStoreService@7853fab6
-[13:58:55] [reactor-http-nio-2/INFO]: [discord4j.gateway.DefaultGatewayClient] [G:a3e700, S:0] Connected to Gateway
-[13:58:55] [reactor-http-nio-2/INFO]: [discord4j.core.shard.LocalShardCoordinator] [G:a3e700, S:0] Shard connected
-[13:58:55] [Craft Scheduler Thread - 3/INFO]: [discordPaperPlugin] Discord Bot logged in as: MinecraftWire#2057
+[17:02:46] [main/INFO]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[17:02:47] [main/INFO]: Reloading ResourceManager: Default, bukkit
+[17:02:48] [Worker-Main-3/INFO]: Loaded 7 recipes
+[17:02:49] [Server thread/INFO]: Starting minecraft server version 1.16.5
+[17:02:49] [Server thread/INFO]: Loading properties
+[17:02:49] [Server thread/INFO]: This server is running Paper version git-Paper-574 (MC: 1.16.5) (Implementing API version 1.16.5-R0.1-SNAPSHOT)
+[17:02:49] [Server thread/INFO]: Debug logging is disabled
+[17:02:49] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[17:02:49] [Server thread/INFO]: Using 4 threads for Netty based IO
+[17:02:49] [Server thread/INFO]: Default game type: SURVIVAL
+[17:02:49] [Server thread/INFO]: Generating keypair
+[17:02:49] [Server thread/INFO]: Starting Minecraft server on *:25565
+[17:02:50] [Server thread/INFO]: Using default channel type
+[17:02:50] [Server thread/INFO]: [discordPaperPlugin] Loading discordPaperPlugin v0.0.1
+[17:02:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[17:02:50] [Server thread/INFO]: Preparing level "world"
+[17:02:50] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[17:02:51] [Server thread/INFO]: Loaded 0 spawn chunks for world world
+[17:02:51] [Server thread/INFO]: Preparing spawn area: 0%
+[17:02:51] [Server thread/INFO]: Time elapsed: 393 ms
+[17:02:51] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[17:02:51] [Server thread/INFO]: Loaded 0 spawn chunks for world world_nether
+[17:02:51] [Server thread/INFO]: Time elapsed: 309 ms
+[17:02:51] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[17:02:51] [Server thread/INFO]: Loaded 0 spawn chunks for world world_the_end
+[17:02:51] [Server thread/INFO]: Time elapsed: 87 ms
+[17:02:51] [Server thread/INFO]: [discordPaperPlugin] Enabling discordPaperPlugin v0.0.1
+[17:02:51] [Server thread/INFO]: Running delayed init tasks
+[17:02:51] [Server thread/INFO]: Done (2.098s)! For help, type "help"
+[17:02:51] [Server thread/INFO]: Timings Reset
+[17:02:53] [Craft Scheduler Thread - 3/INFO]: [discord4j.core.DiscordClientBuilder] Discord4J 3.1.4 (https://discord4j.com)
+[17:02:55] [boundedElastic-1/INFO]: [discord4j.core.shard.GatewayBootstrap] Found StoreService: discord4j.store.api.noop.NoOpStoreService@c1fa7ec
+[17:02:57] [reactor-http-nio-2/INFO]: [discord4j.gateway.DefaultGatewayClient] [G:6c33d89d, S:0] Connected to Gateway
+[17:02:57] [reactor-http-nio-2/INFO]: [discord4j.core.shard.LocalShardCoordinator] [G:6c33d89d, S:0] Shard connected
+[17:02:57] [Craft Scheduler Thread - 3/INFO]: [discordPaperPlugin] Discord Bot logged in as: Server Starter#1974
+[17:04:08] [User Authenticator #1/INFO]: UUID of player PAINDOESNTLAST is f2be1e61-ebba-4dab-980a-8419ed07b1ac
+[17:04:08] [Server thread/INFO]: PAINDOESNTLAST joined the game
+[17:04:09] [Server thread/INFO]: PAINDOESNTLAST[/127.0.0.1:51601] logged in with entity id 166 at ([world]7.179610124839, 64.0, -211.44080502215823)
+[17:04:13] [Server thread/INFO]: PAINDOESNTLAST issued server command: /discord register F5ABBE6D1B55FB638C5446C6A43C5C63C545B78292C229FDF0D0842C41051FA1
+[17:04:22] [Server thread/INFO]: PAINDOESNTLAST issued server command: /time set day\
+[17:04:24] [Server thread/INFO]: PAINDOESNTLAST issued server command: /time set day
+[17:04:24] [Server thread/INFO]: [PAINDOESNTLAST: Set the time to 1000]
+[17:04:51] [Server thread/INFO]: PAINDOESNTLAST lost connection: Disconnected
+[17:04:51] [Server thread/INFO]: PAINDOESNTLAST left the game
+[17:05:20] [Server thread/INFO]: Stopping the server
+[17:05:20] [Server thread/INFO]: Stopping server
+[17:05:20] [Server thread/INFO]: [discordPaperPlugin] Disabling discordPaperPlugin v0.0.1
+[17:05:20] [Server thread/INFO]: Saving players
+[17:05:20] [Server thread/INFO]: Saving worlds
+[17:05:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[17:05:20] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[17:05:20] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[17:05:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[17:05:21] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[17:05:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[17:05:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[17:05:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[17:05:21] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[17:05:21] [Server thread/INFO]: Flushing Chunk IO
+[17:05:21] [Server thread/INFO]: Closing Thread Pool
+[17:05:21] [Server thread/INFO]: Closing Server

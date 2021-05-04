@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class SQLDatabase extends Database{
 
@@ -25,6 +24,11 @@ public class SQLDatabase extends Database{
             e.getStackTrace();
         } 
         this.connection = createConnection();
+
+        //create required database tables
+        this.executeStatement("CREATE TABLE IF NOT EXISTS register(uniqueHash CHAR(64) NOT NULL, discordName varchar(255), discordHash, minecraftName varchar(255)), minecraftUUID CHAR(64), minecraftHash CHAR(64), PRIMARY KEY (uniqueHash)");
+        this.executeStatement("CREATE TABLE IF NOT EXISTS discord_to_minecraft(userHash CHAR(64) NOT NULL, minecraftName varchar(255), minecraftUUID CHAR(36), PRIMARY KEY (userHash));");
+        this.executeStatement("CREATE TABLE IF NOT EXISTS minecraft_to_discord(userHash CHAR(64) NOT NULL, discordName varchar(255), PRIMARY KEY (userHash));");
     }
 
     Connection createConnection() throws SQLException {
@@ -47,10 +51,11 @@ public class SQLDatabase extends Database{
     }
 
     @Override
-    public String newFromDiscord(String username) throws SQLException{
+    public String NewFromDiscord(String discordName) throws SQLException{
 
-        String hashUsername = Hashing.hashString(username);
-        String uniqueHash = Hashing.hashString(username + Hashing.randomHex(16));
+        String hashUsername = Hashing.hashString(discordName);
+        String uniqueHash = Hashing.hashString(discordName + Hashing.randomHex(16));
+
 
         PreparedStatement statement = createConnection().prepareStatement(
             "IF NOT EXISTS (SELECT * FROM discord_to_minecraft WHERE UserHash =" +hashUsername+ ") BEGIN " +
@@ -64,12 +69,8 @@ public class SQLDatabase extends Database{
     }
 
     @Override
-    public int Update(String hash, String key, String value) {
-        return 0;
-    }
-
-    @Override
-    public int Update(String hash, String[] keys, String[] values) {
+    public int Register(String uniqueHash, String minecraftName, String minecraftUUID) {
+        // TODO Auto-generated method stub
         return 0;
     }
 }

@@ -1,7 +1,7 @@
 
 discordConfig:
   prefix: $
-  deafaultChannel: 820980212169703474
+  deafaultChannel: 827103671233937408
 
 #
 # Database types:
@@ -14,12 +14,11 @@ discordConfig:
 #     -json
 #
 
-database: MySQL
+database: json
 
 
 # If MySQL is chosen database:
 sqlConfig:
-  databaseName: minecraft
-  tableName: discordWire
+  databaseName: --database name--
 
   
