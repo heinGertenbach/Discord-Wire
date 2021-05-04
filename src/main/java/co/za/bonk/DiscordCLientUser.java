@@ -3,6 +3,7 @@ package co.za.bonk;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
@@ -45,18 +46,16 @@ public class DiscordCLientUser implements Runnable {
             User author = event.getMessage().getAuthor().get();
 
             //do SQL insertion for hash:
-            String username = author.getUsername() + "#" +author.getDiscriminator();
-            int hash = username.hashCode();
-
-            try{
-                DiscordPaperPlugin.getStatement().executeUpdate("INSERT INTO discord (Discord_Username_num, Refrence_num) VALUES ("+username+","+hash+") WHERE NOT EXISTS(SELECT Discord_Username_num FROM discord WHERE "+username+" = discord.DiscordUsername_num);");
-
-            } catch (SQLException e) {
-                e.getStackTrace();
-            }
+            String username = author.getUsername()+ "#" +author.getDiscriminator();
+            String usernameRandomHash = "";
+            //Update database:
+            Database database = DiscordPaperPlugin.getDatabase();
+            try {
+                usernameRandomHash = database.newFromDiscord(username);
+            } catch (Exception e) {e.getStackTrace(); }
 
             //return the command to enter to dm:
-            author.getPrivateChannel().block().createMessage("Enter command: /discord register " + hash).block();
+            author.getPrivateChannel().block().createMessage("Enter command: /discord register " + usernameRandomHash).block();
 
         });
     }

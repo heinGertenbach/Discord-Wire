@@ -24,7 +24,8 @@ public class DiscordCommand implements CommandExecutor{
                         String hash = args[1];
 
                         try {
-                            DiscordPaperPlugin.getStatement().executeUpdate("INSERT INTO discord (Minecraft_names) VALUES ("+minecraftName+") WHERE Reference_num = "+hash+";");
+                            throw new SQLException();
+                            // DiscordPaperPlugin.getDatabase().executeStatement("INSERT INTO discord (Minecraft_names) VALUES ("+minecraftName+") WHERE Reference_num = "+hash+";");
                         } catch(SQLException e) {
                             e.getStackTrace();
                         }
