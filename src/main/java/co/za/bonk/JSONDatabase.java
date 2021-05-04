@@ -5,12 +5,12 @@ import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class JSONDatabase extends Database {
 
-    JSONObject jsonObject;
+    JsonObject jsonObject;
     
 
     public JSONDatabase() {
@@ -24,8 +24,8 @@ public class JSONDatabase extends Database {
 
         try {
             FileReader fileReader = new FileReader(databaseFile);
-            JSONParser jsonParser = new JSONParser();
-            this.jsonObject = (JSONObject) jsonParser.parse(fileReader);
+            JsonParser jsonParser = new JsonParser();
+            this.jsonObject = (JsonObject) jsonParser.parse(fileReader);
         } catch (Exception e) {
             plugin.getLogger().warning(e.toString());
         }
@@ -38,13 +38,13 @@ public class JSONDatabase extends Database {
         String uniqueHash = Hashing.hashString(discordName + Hashing.randomHex(16));
 
         //update JSON database:
-        JSONObject registerObject = (JSONObject) this.jsonObject.get("register");
+        JsonObject registerObject = (JsonObject) this.jsonObject.get("register");
         
-        if (!registerObject.containsKey(uniqueHash)) {
-            JSONObject userObject = new JSONObject();
-            userObject.put("discordName", discordName);
-            userObject.put("discordHash", discordHash);
-            registerObject.put(uniqueHash, userObject);
+        if (!registerObject.has(uniqueHash)) {
+            JsonObject userObject = new JsonObject();
+            userObject.addProperty("discordName", discordName);
+            userObject.addProperty("discordHash", discordHash);
+            registerObject.add(uniqueHash, userObject);
         }
         
         this.uploadNew();
@@ -57,31 +57,31 @@ public class JSONDatabase extends Database {
 
         String minecraftHash = Hashing.hashString(minecraftName);
         
-        JSONObject register = (JSONObject) this.jsonObject.get("register");
-        JSONObject dTM = (JSONObject) this.jsonObject.get("discord_to_minecraft");
-        JSONObject mTD = (JSONObject) this.jsonObject.get("minecraft_to_discord");
+        JsonObject register = (JsonObject) this.jsonObject.get("register");
+        JsonObject dTM = (JsonObject) this.jsonObject.get("discord_to_minecraft");
+        JsonObject mTD = (JsonObject) this.jsonObject.get("minecraft_to_discord");
 
-        if (register.containsKey(uniqueHash)) {
-            JSONObject userRegister = (JSONObject) register.get(uniqueHash);
+        if (register.has(uniqueHash)) {
+            JsonObject userRegister = (JsonObject) register.get(uniqueHash);
 
-            String discordName = (String) userRegister.get("discordName");
-            String discordHash = (String) userRegister.get("discordHash");
+            String discordName = userRegister.get("discordName").getAsString();
+            String discordHash = userRegister.get("discordHash").getAsString();
 
-            JSONObject userDTM = new JSONObject();
-            JSONObject userMTD = new JSONObject();
+            JsonObject userDTM = new JsonObject();
+            JsonObject userMTD = new JsonObject();
 
-            userDTM.put("minecraftName", minecraftName);
-            userDTM.put("minecraftUUID", minecraftUUID);
+            userDTM.addProperty("minecraftName", minecraftName);
+            userDTM.addProperty("minecraftUUID", minecraftUUID);
 
-            userMTD.put("discordName", discordName);
+            userMTD.addProperty("discordName", discordName);
 
-            dTM.put(discordHash, userDTM);
-            mTD.put(minecraftHash, userMTD);
+            dTM.add(discordHash, userDTM);
+            mTD.add(minecraftHash, userMTD);
             register.remove(uniqueHash);
 
-            jsonObject.put("discord_to_minecraft", dTM);
-            jsonObject.put("minecraft_to_discord", mTD);
-            jsonObject.put("register", register);
+            jsonObject.add("discord_to_minecraft", dTM);
+            jsonObject.add("minecraft_to_discord", mTD);
+            jsonObject.add("register", register);
 
             this.uploadNew();
 
@@ -94,11 +94,11 @@ public class JSONDatabase extends Database {
 
     @Override
     public String fromMinecraft(String minecraftHash) throws Exception {
-        JSONObject mTD = (JSONObject) this.jsonObject.get("minecraft_to_discord");
-        JSONObject userMTD = (JSONObject) mTD.get(minecraftHash);
+        JsonObject mTD = (JsonObject) this.jsonObject.get("minecraft_to_discord");
+        JsonObject userMTD = (JsonObject) mTD.get(minecraftHash);
 
         if (userMTD != null) {
-            return (String) userMTD.get("discordName");
+            return userMTD.get("discordName").getAsString();
         }
         return null;
     }
