@@ -27,6 +27,10 @@ public class DiscordCommand implements CommandExecutor{
                             int result = database.Register(hash, minecraftName, minecraftUUID);
 
                             switch (result) {
+                                case 0: {
+                                    sender.sendMessage("well done you registered as %s!".formatted(database.fromMinecraft(hash)));
+                                    return true;
+                                }
                                 case 1: {
                                     sender.sendMessage("given registration key:%s\ninvalid\nmight be out of date".formatted(hash));
                                     return true;
@@ -37,9 +41,6 @@ public class DiscordCommand implements CommandExecutor{
                             e.getStackTrace();
                             return false;
                         }
-
-                        sender.sendMessage("well done you registered as %s!".formatted(minecraftName));
-                        return true;
                     }
 
                     sender.sendMessage("usage: /<command> [register] [unique_hash]");
