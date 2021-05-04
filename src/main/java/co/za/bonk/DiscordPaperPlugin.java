@@ -14,7 +14,7 @@ public class DiscordPaperPlugin extends JavaPlugin {
 
 
     private static DiscordPaperPlugin instance;
-    private static Statement statement;
+    private static Database database;
 
     private FileConfiguration secretsConfig;
 
@@ -23,11 +23,10 @@ public class DiscordPaperPlugin extends JavaPlugin {
         return instance;
     }
 
-    public static Statement getStatement() {
-        return statement;
+    public static Database getDatabase() {
+        return database;
     }
 
-    String host, port, database, username, password;
     static Connection connection;
 
     @Override
@@ -49,32 +48,50 @@ public class DiscordPaperPlugin extends JavaPlugin {
         getCommand("discord").setExecutor(new DiscordCommand());
         getCommand("discord").setTabCompleter(new DiscordCommandTabCompleter());
 
-        //connection info
-        host = secretsConfig.getString("sql.hostname"); //"admin.bonk.co.za";
-        port = secretsConfig.getString("sql.port");
-        database = secretsConfig.getString("sql.database");
-        username = secretsConfig.getString("sql.username");
-        password = secretsConfig.getString("sql.password");
+        String databaseKey = getConfig().getString("database").toLowerCase();
 
-        Logger log = getLogger();
-        log.info("SQL information:");
-        log.info("  hostname: " + host);
-        log.info("  port    : " + port);
-        log.info("  database: " + database);
-        log.info("  username: " + username);
-        log.info("  password: " + password);
-
-        //connection
-        try {    
-            openConnection();
-            statement = connection.createStatement();
-                       
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        switch (databaseKey) {
         
+            //MySQL setup:
+            case "mysql": {
+
+                //connection info MySQL
+                final String host = secretsConfig.getString("sql.hostname"); //"admin.bonk.co.za";
+                final String port = secretsConfig.getString("sql.port");
+                final String databaseName = getConfig().getString("sqlConfig.databaseName");
+                final String username = secretsConfig.getString("sql.username");
+                final String password = secretsConfig.getString("sql.password");
+
+                //Output to console database info
+                Logger log = getLogger();
+                log.info("SQL information:");
+                log.info("  hostname: " + host);
+                log.info("  port    : " + port);
+                log.info("  database: " + databaseName);
+                log.info("  username: " + username);
+                log.info("  password: " + password);
+
+                //connection
+                try {
+            
+                    SQLDatabase sqlDatabase = new SQLDatabase("jdbc:mysql://" +host+ ":" +port+ "/" +databaseName+ "?autoReconnect=true&useSSL=false", username, password);
+
+                    sqlDatabase.executeStatement("CREATE TABLE IF NOT EXISTS discord_to_minecraft(UserHash CHAR(64) NOT NULL, UniqueHash CHAR(64), MinecraftName varchar(255), MinecraftUUID CHAR(64), PRIMARY KEY (UserHash));");
+                    sqlDatabase.executeStatement("CREATE TABLE IF NOT EXISTS minecraft_to_discord(UserHash CHAR(64) NOT NULL, UniqueHash CHAR(64), DiscordName varchar(255), MinecraftUUID CHAR(64), PRIMARY KEY (UserHash));");
+
+                    database = sqlDatabase;
+                            
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            case "mongodb": {
+                //to-do:
+
+
+            }
+        }
     }
 
     @Override
@@ -101,15 +118,5 @@ public class DiscordPaperPlugin extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException e){
             e.printStackTrace();
         }
-    }
-
-    public void openConnection() throws SQLException,
-            ClassNotFoundException {
-        if (connection != null && !connection.isClosed()) {
-            return;
-        }
-
-        SQLDatabase database = new SQLDatabase("jdbc:mysql://" +this.host+ ":" +this.port+ "/" +this.database+ "?autoReconnect=true&useSSL=false", username, password);
-        connection = database.getConnection();
     }
 }

@@ -20,6 +20,5 @@ database: MySQL
 # If MySQL is chosen database:
 sqlConfig:
   databaseName: --database name--
-  tableName: discordWire
 
   

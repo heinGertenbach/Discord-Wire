@@ -1,3 +1,25 @@
+
 discordConfig:
   prefix: $
-  deafaultChannel: 827103671233937408
+  deafaultChannel: 820980212169703474
+
+#
+# Database types:
+#
+#   remote database:
+#     - MySQL
+#     - MongoDB
+#
+#   local database:
+#     -json
+#
+
+database: MySQL
+
+
+# If MySQL is chosen database:
+sqlConfig:
+  databaseName: minecraft
+  tableName: discordWire
+
+  

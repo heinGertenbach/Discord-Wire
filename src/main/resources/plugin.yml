@@ -6,5 +6,5 @@ main: co.za.bonk.DiscordPaperPlugin
 commands:
   discord:
     description: this plugin's general command
-    usage: /<command> [register]
+    usage: "usage: /<command> [register]"
     permission: discord.default
