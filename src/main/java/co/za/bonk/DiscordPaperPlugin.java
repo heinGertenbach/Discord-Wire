@@ -76,9 +76,6 @@ public class DiscordPaperPlugin extends JavaPlugin {
             
                     SQLDatabase sqlDatabase = new SQLDatabase("jdbc:mysql://" +host+ ":" +port+ "/" +databaseName+ "?autoReconnect=true&useSSL=false", username, password);
 
-                    sqlDatabase.executeStatement("CREATE TABLE IF NOT EXISTS discord_to_minecraft(UserHash CHAR(64) NOT NULL, UniqueHash CHAR(64), MinecraftName varchar(255), MinecraftUUID CHAR(64), PRIMARY KEY (UserHash));");
-                    sqlDatabase.executeStatement("CREATE TABLE IF NOT EXISTS minecraft_to_discord(UserHash CHAR(64) NOT NULL, UniqueHash CHAR(64), DiscordName varchar(255), MinecraftUUID CHAR(64), PRIMARY KEY (UserHash));");
-
                     database = sqlDatabase;
                             
                 } catch (SQLException e) {
@@ -90,6 +87,12 @@ public class DiscordPaperPlugin extends JavaPlugin {
                 //to-do:
 
 
+            }
+
+            case "json": {
+                JSONDatabase jsonDatabase = new JSONDatabase();
+
+                database = jsonDatabase;
             }
         }
     }

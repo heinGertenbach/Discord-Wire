@@ -14,7 +14,7 @@ discordConfig:
 #     -json
 #
 
-database: MySQL
+database: json
 
 
 # If MySQL is chosen database:

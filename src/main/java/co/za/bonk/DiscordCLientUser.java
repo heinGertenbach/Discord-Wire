@@ -47,15 +47,18 @@ public class DiscordCLientUser implements Runnable {
 
             //do SQL insertion for hash:
             String username = author.getUsername()+ "#" +author.getDiscriminator();
-            String usernameRandomHash = "";
             //Update database:
             Database database = DiscordPaperPlugin.getDatabase();
+            
             try {
-                usernameRandomHash = database.newFromDiscord(username);
-            } catch (Exception e) {e.getStackTrace(); }
-
-            //return the command to enter to dm:
-            author.getPrivateChannel().block().createMessage("Enter command: /discord register " + usernameRandomHash).block();
+                String usernameRandomHash = database.NewFromDiscord(username);
+                
+                //return the command to enter to dm:
+                author.getPrivateChannel().block().createMessage("Enter command: **/discord register "+ usernameRandomHash +"**").block();
+            } catch (Exception e) {
+                System.out.println(e.toString()); 
+                author.getPrivateChannel().block().createMessage("An error occured while requesting registrasion key").block();
+            }
 
         });
     }
