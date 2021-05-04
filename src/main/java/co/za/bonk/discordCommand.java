@@ -38,7 +38,7 @@ public class DiscordCommand implements CommandExecutor{
                             return false;
                         }
 
-                        sender.sendMessage("well done you registered!");
+                        sender.sendMessage("well done you registered as %s!".formatted(minecraftName));
                         return true;
                     }
 

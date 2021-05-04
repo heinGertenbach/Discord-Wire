@@ -92,6 +92,17 @@ public class JSONDatabase extends Database {
         return 1;
     }
 
+    @Override
+    public String fromMinecraft(String minecraftHash) throws Exception {
+        JSONObject mTD = (JSONObject) this.jsonObject.get("minecraft_to_discord");
+        JSONObject userMTD = (JSONObject) mTD.get(minecraftHash);
+
+        if (userMTD != null) {
+            return (String) userMTD.get("discordName");
+        }
+        return null;
+    }
+
     private void uploadNew() {
         DiscordPaperPlugin plugin = DiscordPaperPlugin.getInstance();
 

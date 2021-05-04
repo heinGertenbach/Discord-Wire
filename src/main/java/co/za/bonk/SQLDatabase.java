@@ -73,4 +73,9 @@ public class SQLDatabase extends Database{
         // TODO Auto-generated method stub
         return 0;
     }
+
+    @Override
+    public String fromMinecraft(String minecraftHash) throws Exception {
+        return null;
+    }
 }
