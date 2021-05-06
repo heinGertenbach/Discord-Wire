@@ -28,7 +28,7 @@ Current limitations:
 
 ## Acknowledgements
 ### Contributers:
-* @heinGertnbach
+* [heinGertnbach](https://github.com/heinGertenbach)
 * @UdoElleh
 
 ### 3rd-party softare
