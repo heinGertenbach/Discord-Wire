@@ -7,8 +7,8 @@ discordConfig:
 # Database types:
 #
 #   remote database:
-#     - MySQL !!MySQL has not been tested yet but might work
-#     - MongoDB !!!MongoDB is a upcomming feature
+#     - MySQL !!MySQL has not been tested yet but might work!!
+#     - MongoDB !!!MongoDB is a upcomming feature!!!
 #
 #   local database:
 #     -json
