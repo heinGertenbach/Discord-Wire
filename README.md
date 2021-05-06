@@ -1,6 +1,4 @@
-
-
-<img src="/DiscordWireLogo.png" alt="Logo" style="width:200px;"/>
+<img src="/DiscordWireLogo.png" alt="Logo" width="200"/>
 
 # About Discord Wire:
 Discord Wire is a paper plugin that connects a paper server and discord together. Currently users can register by giving a discord command: `!register`.
