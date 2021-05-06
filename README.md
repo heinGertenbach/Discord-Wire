@@ -26,11 +26,12 @@ Current limitations:
 * Only Minecraft 1.16 is supported.
 * Discord does not havy any permissions system anyone can change the default channel.
 
+## Acknowledgements
 ### Contributers:
 * @heinGertnbach
 * @UdoElleh
 
-### Acknowledgements & 3rd-party softare
+### 3rd-party softare
 I would like to thank the following projects and people maintaining them:
 * [PaperMC](https://papermc.io/)
 * [Spigot](https://www.spigotmc.org/)
