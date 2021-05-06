@@ -1,3 +1,5 @@
+<img src="/DiscordWireLogo.png" alt="Logo" width="200"/>
+
 # About Discord Wire:
 Discord Wire is a paper plugin that connects a paper server and discord together. Currently users can register by giving a discord command: `!register`.
 It will send the user a dm containing a registration key to bring to minecraft where a command: `/discord register [unique key]` can be used to register.
