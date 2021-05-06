@@ -1,27 +1,36 @@
 package co.za.bonk;
 
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import discord4j.rest.entity.RestChannel;
+import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.TextComponent;
+
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 
 public class EventListener implements Listener {
-    
-    @SuppressWarnings("deprecation")
+
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
+    public void onChatEVent(AsyncChatEvent event) {
+        DiscordPaperPlugin plugin = DiscordPaperPlugin.getInstance();
+
         Player player = event.getPlayer();
-        String playerHash = Hashing.hashString(player.getDisplayName());
+        String playerHash = Hashing.hashString(player.getName());
         Database database = DiscordPaperPlugin.getDatabase();
 
-        String message = event.getMessage();
+        String message = ((TextComponent) event.message()).content();
         RestChannel channel = DiscordCLientUser.getDeafaultChannel();
 
         try {
-            String discordName = database.fromMinecraft(playerHash);
+            String discordName = database.FromMinecraft(playerHash);
             if (discordName != null) {
-                channel.createMessage(discordName.substring(0, discordName.length()-5) +": "+ message).block();
+                Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable(){
+                    @Override
+                    public void run() {
+                        channel.createMessage(discordName.substring(0, discordName.length()-5) +": "+ message).block();
+                    };
+                });
                 return;
             }
 
@@ -30,6 +39,12 @@ public class EventListener implements Listener {
         }
 
         //Send message without discord name
-        channel.createMessage(player.getName() +": "+ message).block();
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable(){
+            @Override
+            public void run() {
+                channel.createMessage(player.getName() +": "+ message).block();
+            };
+        });
+
     }
 }

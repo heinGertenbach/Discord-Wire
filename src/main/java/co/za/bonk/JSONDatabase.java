@@ -40,12 +40,10 @@ public class JSONDatabase extends Database {
         //update JSON database:
         JsonObject registerObject = (JsonObject) this.jsonObject.get("register");
         
-        if (!registerObject.has(uniqueHash)) {
-            JsonObject userObject = new JsonObject();
-            userObject.addProperty("discordName", discordName);
-            userObject.addProperty("discordHash", discordHash);
-            registerObject.add(uniqueHash, userObject);
-        }
+        JsonObject userObject = new JsonObject();
+        userObject.addProperty("discordName", discordName);
+        userObject.addProperty("discordHash", discordHash);
+        registerObject.add(uniqueHash, userObject);
         
         this.uploadNew();
 
@@ -79,9 +77,9 @@ public class JSONDatabase extends Database {
             mTD.add(minecraftHash, userMTD);
             register.remove(uniqueHash);
 
-            jsonObject.add("discord_to_minecraft", dTM);
-            jsonObject.add("minecraft_to_discord", mTD);
-            jsonObject.add("register", register);
+            this.jsonObject.add("discord_to_minecraft", dTM);
+            this.jsonObject.add("minecraft_to_discord", mTD);
+            this.jsonObject.add("register", register);
 
             this.uploadNew();
 
@@ -93,7 +91,7 @@ public class JSONDatabase extends Database {
     }
 
     @Override
-    public String fromMinecraft(String minecraftHash) throws Exception {
+    public String FromMinecraft(String minecraftHash) throws Exception {
         JsonObject mTD = (JsonObject) this.jsonObject.get("minecraft_to_discord");
         JsonObject userMTD = (JsonObject) mTD.get(minecraftHash);
 
@@ -102,6 +100,14 @@ public class JSONDatabase extends Database {
         }
         return null;
     }
+
+    @Override
+    public void Disable() {
+        JsonObject register = new JsonObject();
+        this.jsonObject.add("register", register);
+    }
+
+
 
     private void uploadNew() {
         DiscordPaperPlugin plugin = DiscordPaperPlugin.getInstance();
