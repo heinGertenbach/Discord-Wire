@@ -20,7 +20,7 @@ Planned and implemented features:
 * - [ ] MongoDB datase
 * - [ ] Discord Permissions
 
-# Limitations:
+### Limitations:
 Current limitations:
 * Only [PaperMC](https://papermc.io/) is supported.
 * Only Minecraft 1.16 is supported.
