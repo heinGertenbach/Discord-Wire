@@ -3,6 +3,7 @@ package co.za.bonk;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
@@ -48,16 +49,22 @@ public class DiscordCLientUser implements Runnable {
             String username = author.getUsername()+ "#" +author.getDiscriminator();
             //Update database:
             Database database = DiscordPaperPlugin.getDatabase();
+            DiscordPaperPlugin plugin = DiscordPaperPlugin.getInstance();
             
-            try {
-                String usernameRandomHash = database.NewFromDiscord(username);
-                
-                //return the command to enter to dm:
-                author.getPrivateChannel().block().createMessage("Enter command: **/discord register "+ usernameRandomHash +"**").block();
-            } catch (Exception e) {
-                System.out.println(e.toString()); 
-                author.getPrivateChannel().block().createMessage("An error occured while requesting registrasion key").block();
-            }
+            Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable(){
+               @Override
+               public void run() {
+                    try {
+                        String usernameRandomHash = database.NewFromDiscord(username);
+                        
+                        //return the command to enter to dm:
+                        author.getPrivateChannel().block().createMessage("Enter command: **/discord register "+ usernameRandomHash +"**").block();
+                    } catch (Exception e) {
+                        plugin.getLogger().warning(e.getMessage()); 
+                        author.getPrivateChannel().block().createMessage("An error occured while requesting registrasion key").block();
+                    }
+               } 
+            });
 
         });
     }

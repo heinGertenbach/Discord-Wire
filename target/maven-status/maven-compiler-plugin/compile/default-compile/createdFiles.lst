@@ -1,10 +1,14 @@
 co\za\bonk\Database.class
 co\za\bonk\DiscordCLientUser.class
+co\za\bonk\EventListener$2.class
 co\za\bonk\DiscordCommandTabCompleter.class
 co\za\bonk\Command.class
+co\za\bonk\DiscordCLientUser$1.class
+co\za\bonk\EventListener$1.class
 co\za\bonk\SQLDatabase.class
 co\za\bonk\DiscordPaperPlugin.class
 co\za\bonk\Hashing.class
+co\za\bonk\DiscordCommand$1.class
 co\za\bonk\EventListener.class
 co\za\bonk\JSONDatabase.class
 co\za\bonk\DiscordCommand.class
