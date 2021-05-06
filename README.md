@@ -29,7 +29,7 @@ Current limitations:
 ## Acknowledgements
 ### Contributers:
 * [heinGertnbach](https://github.com/heinGertenbach)
-* @UdoElleh
+* [UdoElleh](https://github.com/UdoElleh)
 
 ### 3rd-party softare
 I would like to thank the following projects and people maintaining them:
