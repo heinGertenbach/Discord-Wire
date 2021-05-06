@@ -14,7 +14,7 @@ Any requested database format will be considered.
 Planned and implemented features:
 * - [x] Minecraft chat mirrored into Discord
 * - [x] [PaperMC](https://papermc.io/) support
-* - [ ] Spigot support
+* - [ ] [Spigot](https://www.spigotmc.org/) support
 * - [ ] Multiple Server Support
 * - [ ] MySQL database
 * - [ ] MongoDB datase
