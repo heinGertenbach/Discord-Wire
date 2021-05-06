@@ -27,3 +27,4 @@ Planned and implemented features:
 I would like to thank the following projects and people maintaining them:
 * [PaperMC](https://papermc.io/)
 * [Spigot](https://www.spigotmc.org/)
+* [Discord4J](https://discord4j.com/)
