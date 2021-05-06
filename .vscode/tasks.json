@@ -30,7 +30,7 @@
         {
             "label": "testCompile",
             "type": "shell",
-            "command": "./paperTestServer/testPlugin.bat",
+            "command": "../paperTestServer/testPlugin.bat",
             "group": "test"
         }
     ]
