@@ -13,11 +13,16 @@ Any requested database format will be considered.
 ## Features:
 Planned and implemented features:
 * - [x] Minecraft chat mirrored into Discord
-* - [x] PaperMC support
+* - [x] [PaperMC](https://papermc.io/) support
 * - [ ] Spigot support
 * - [ ] Multiple Server Support
 * - [ ] MySQL database
 * - [ ] MongoDB datase
+
+## Limitations:
+Current limitations:
+* Only [PaperMC](https://papermc.io/) is supported.
+* Only Minecraft 1.16 is supported.
 
 ### Contributers:
 * @heinGertnbach
