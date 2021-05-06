@@ -18,11 +18,13 @@ Planned and implemented features:
 * - [ ] Multiple Server Support
 * - [ ] MySQL database
 * - [ ] MongoDB datase
+* - [ ] Discord Permissions
 
 ## Limitations:
 Current limitations:
 * Only [PaperMC](https://papermc.io/) is supported.
 * Only Minecraft 1.16 is supported.
+* Discord does not havy any permissions system anyone can change the default channel.
 
 ### Contributers:
 * @heinGertnbach
