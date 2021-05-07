@@ -22,7 +22,7 @@ Planned and implemented features:
 ## Limitations:
 Current limitations:
 * Only [PaperMC](https://papermc.io/) is supported.
-* Only Minecraft 1.16 is supported.
+* Only Minecraft 1.16 has been tested.
 
 ### Contributers:
 * @heinGertnbach
