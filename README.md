@@ -5,7 +5,7 @@ It will send the user a dm containing a registration key to bring to minecraft w
 After the registration process is completed when the user sends a message in minecraft it will be forwarded to discord and use their discord username.
 
 ## Data Storage:
-Currently the only storage method is in JSON format, but MySql format will follow soon.
+Currently the only storage method is in JSON format, but MySQL format will follow soon.
 MongoDB might be implemented in the future.
 
 Any requested database format will be considered.
